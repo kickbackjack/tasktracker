@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+
+<!--
+ConversionPattern format specification
+%d      inserts the date; you can specify the format (%d{yyyy-MM-dd HH:mm:ss,SSS})
+%-5p    inserts the priority log level, 5 characters, left justified
+%c{1}   inserts the name of the class
+%L      inserts the line number
+%m      inserts the user message
+%n      inserts the separator (for example, a new line)
+-->
+<log4j:configuration>
+    <appender name="stderr" class="org.apache.log4j.ConsoleAppender">
+        <param name="threshold" value="warn" />
+        <param name="target" value="System.err"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d: %-5p [%F:%L] - %m%n" />
+        </layout>
+    </appender>
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <param name="threshold" value="info" />
+        <param name="target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d: %-5p [%F:%L] - %m%n" />
+        </layout>
+    </appender>
+    
+    <root>
+        <priority value="debug"></priority>
+        <appender-ref ref="stderr" />
+        <appender-ref ref="stdout" />
+    </root>
+</log4j:configuration>
